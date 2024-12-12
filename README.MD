@@ -1,34 +1,26 @@
-# Основа для SOAP заглушки
-Путь для получения wsdl: http://localhost:8080/ws/countries.wsdl  
-Путь для отправления запросов: http://localhost:8080/ws
+# Основа для REST заглушки 
+Путь для отправления запросов: http://localhost:8080/info/postBalances
 
 Пример тела запроса:  
-```xml
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
-                  xmlns:gs="http://www.baeldung.com/springsoap/gen">
-    <soapenv:Header/>
-    <soapenv:Body>
-        <gs:getCountryRequest>
-            <gs:name>Россия</gs:name>
-        </gs:getCountryRequest>
-    </soapenv:Body>
-</soapenv:Envelope>
+```json
+{
+        "rqUID": "58dgtf565j8547f64ke7",
+        "clientId": "9050000000000000000",
+        "account": "80500000000000000001",
+        "openDate": "2020-01-01",
+        "closeDate": "2025-01-01"
+        }
 ```
 Пример тела ответа:  
-```xml
-<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
-    <SOAP-ENV:Header/>
-    <SOAP-ENV:Body>
-        <ns2:getCountryResponse xmlns:ns2="http://www.baeldung.com/springsoap/gen">
-            <ns2:country>
-                <ns2:name>Россия</ns2:name>
-                <ns2:population>146206000</ns2:population>
-                <ns2:capital>Москва</ns2:capital>
-                <ns2:currency>RUB</ns2:currency>
-            </ns2:country>
-        </ns2:getCountryResponse>
-    </SOAP-ENV:Body>
-</SOAP-ENV:Envelope>
+```json
+{
+    "rqUID": "58dgtf565j8547f64ke7",
+    "clientId": "9050000000000000000",
+    "account": "80500000000000000001",
+    "currency": "EU",
+    "balance": 146.02,
+    "maxLimit": 1000
+}
 ```
 Пример тела запроса и ответа из Postman:
 <img src="img.png" alt="Пример из Postman">
